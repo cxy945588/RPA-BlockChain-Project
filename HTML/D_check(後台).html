@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Storage Frontend</title>
+    <style>
+        body {
+            background-color: #e8eff5;
+            font-family: 'ABeeZee', sans-serif;
+        }
+
+        .table-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            text-align: center;
+            margin-top: 100px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        label {
+            display: block;
+            margin: 1%;
+            font-size: 20px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .form-control-default {
+            margin-bottom: 2%;
+        }
+
+        .submitBtn {
+            display: block;
+            margin-left: auto;
+            border: none;
+            background-color: #698aab;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 20px;
+            width: 15%;
+            margin-top: 3%;
+        }
+
+        .submitBtn:hover {
+            background-color: #44617b;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="table-container">
+        <h2>憑證上傳</h2>
+        <form id="uploadForm">
+            <label for="userAddress">使用者地址：</label>
+            <input class="form-control form-control-default" type="text" id="userAddress" required>
+
+            <label for="dataString">憑證名稱：</label>
+            <input class="form-control form-control-default" type="text" id="dataString" required>
+
+            <label for="cid1">CID 1：</label>
+            <input class="form-control form-control-default" type="text" id="cid1" required>
+
+            <label for="cid2">CID 2：</label>
+            <input class="form-control form-control-default" type="text" id="cid2" required>
+
+            <button class="submitBtn" type="button" onclick="uploadData()">上傳</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.4.0/dist/web3.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // 初始化 Web3
+            if (typeof web3 !== 'undefined') {
+                web3 = new Web3(web3.currentProvider);
+            } else {
+                alert("Please install MetaMask or other Ethereum browser extension.");
+            }
+
+            // 替換為你的實際合約地址和 ABI
+            const contractAddress = "0x88d05c8961B4E2A691C06B1759Fe9063A25DF343";
+            const contractABI = [
+                // 請替換以下為你的實際 ABI
+                {
+                    "constant": false,
+                    "inputs": [
+                        {
+                            "name": "_userAddress",
+                            "type": "address"
+                        },
+                        {
+                            "name": "_dataString",
+                            "type": "string"
+                        },
+                        {
+                            "name": "_ipfsHash1",
+                            "type": "string"
+                        },
+                        {
+                            "name": "_ipfsHash2",
+                            "type": "string"
+                        }
+                    ],
+                    "name": "addDataRecord",
+                    "outputs": [
+                        {
+                            "name": "",
+                            "type": "uint256"
+                        }
+                    ],
+                    "payable": false,
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                }
+                // 其他可能的 ABI 部分
+            ];
+
+            const dataStorageContract = new web3.eth.Contract(contractABI, contractAddress);
+
+            window.uploadData = async function () {
+                const userAddress = document.getElementById("userAddress").value;
+                const dataString = document.getElementById("dataString").value;
+                const cid1 = document.getElementById("cid1").value;
+                const cid2 = document.getElementById("cid2").value;
+
+                try {
+                    const accounts = await web3.eth.requestAccounts();
+                    const senderAddress = accounts[0];
+
+                    // 檢查合約中是否存在 addDataRecord 函數
+                    if (dataStorageContract.methods.addDataRecord) {
+                        const result = await dataStorageContract.methods.addDataRecord(
+                            userAddress,
+                            dataString,
+                            cid1,
+                            cid2
+                        ).send({ from: senderAddress });
+
+                        document.getElementById("result").textContent = 'Data uploaded.';
+
+                        if (result.events && result.events.DataRecordAdded) {
+                            const userAddress = result.events.DataRecordAdded.returnValues.userAddress;
+                            const cid = result.events.DataRecordAdded.returnValues.cid;
+                            document.getElementById("result").textContent += ` CID: ${userAddress}-${cid}`;
+                        } else {
+                            document.getElementById("result").textContent += ' (Event not found)';
+                        }
+                    } else {
+                        console.error("addDataRecord function not found in the contract");
+                    }
+                } catch (error) {
+                    console.error(error);
+                    document.getElementById("result").textContent = `Error uploading data: ${error.message}`;
+                }
+            };
+        });
+    </script>
+</body>
+</html>

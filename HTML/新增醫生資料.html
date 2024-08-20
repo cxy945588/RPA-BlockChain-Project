@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新增醫生資料-產檢流程證明系統</title>
+  <link rel="icon" href="image/logo.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="image/logo.ico" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="../CSS/權限管理.css" />
+  <!-- 引入 Web3.js 庫 -->
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+  <!-- 引入 jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script type="module" src="../JS/JS_HTML/D_Nav.js"></script>
+  
+</head>
+<script>
+  // 使用 jQuery 載入 nav.html
+  $(document).ready(function () {
+    $("#navContainer").load("PM_nav.html", function () {
+      // 在加载完成后显示导航栏
+      $("#navContainer").css("opacity", 1);
+      $(".main").css("opacity", 1);
+    });
+  }); 
+</script>
+
+<body>
+  <div id="navContainer"></div>
+
+  <main class="main">
+    <div class="data-entry-form container1">
+      <h2>輸入醫護資訊</h2>
+      <form id="employeeForm">
+        <label for="hospitalname">醫院名稱：</label>
+        <input type="text" id="hospitalname" name="hospitalname" required readonly>
+        <br>
+        <label for="employeeId">員工編號：</label>
+        <input type="text" id="employeeId" name="employeeId" required>
+        <br>
+        <label for="employeeName">員工姓名：</label>
+        <input type="text" id="employeeName" name="employeeName" required>
+        <br>
+        <label for="employeeAddress">錢包地址：</label>
+        <input type="text" id="employeeAddress" name="employeeAddress" required>
+        <br>
+        <!-- 这里可以添加其他字段 -->
+        <br>
+        <button type="submit" class="btn btn-secondary">確認資料無誤，送出</button>
+      </form>
+    </div>
+    <div class="center-button">
+      <button id="goToHomeButton" class="btn btn-outline-secondary">返回首頁</button>
+    </div>
+  </main>
+  
+
+  <script type="module" src="../JS/JS_HTML/AddDoctorData.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!-- 引入navJS動畫 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css" />
+
+<!-- 標頭 -->
+<nav class="navbar navbar-dark fixed-top" style="background-color: #313135">
+  <meta charset="utf-8" />
+  <div class="container-fluid">
+    <!-- Left toggler btn -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Nav title -->
+    <ul class="nav justify-content-start">
+      <a class="navbar-brand" href="D_index.html" style="margin-left: auto; margin-right: auto;">
+        <img src="image/logo1.png" alt="產檢流程證明系統" class="logo-image" style="height: auto; width: 400px; margin: 0; display: block; margin-left: auto; margin-right: auto;"> <!-- 設定合適的寬度和高度 -->
+      </a>
+    </ul>
+    <!-- Right toggler btn -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+      aria-controls="offcanvasRight" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Left toggler -->
+    <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="container-fluid offcanvas-title" id="offcanvasNavbarLabel">產檢流程證明系統</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+          <li class="container-fluid nav-item">
+            <a class="nav-link" href="D_index.html"><i class="fi fi-rr-home"></i>&emsp;首頁</a>
+          </li>
+          <li class="container-fluid nav-item">
+            <a class="nav-link" href="D_add.php"><i class="fi fi-rr-file-edit"></i>&emsp;新增產檢資料</a>
+          </li>
+          <li class="container-fluid nav-item">
+            <a class="nav-link" href="D_query.html"><i class="fi fi-rr-search-alt"></i>&emsp;查詢產檢資料</a>
+          </li>
+          <li class="container-fluid nav-item">
+            <a class="nav-link" href="D_Certificate.html"><i class="fi fi-rr-memo-circle-check"></i>&emsp;上傳產檢憑證</a>
+          </li>
+          <li class="container-fluid nav-item">
+            <a class="nav-link" href="D_check.html"><i class="fi fi-rr-memo-circle-check"></i>&emsp;查看產檢憑證</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Right toggler -->
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasRight"
+      aria-labelledby="offcanvasRightLabel">
+      <div class="offcanvas-header">
+        <h5 class="container-fluid offcanvas-title" id="nav_username"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+          <li class="container-fluid nav-item">
+            <!-- D_Nav.js實現功能 -->
+            <a id="logoutButton" class="nav-link" href="#"><i class="fi fi-rr-exit"></i>&emsp;登出</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <style>
+   @media (max-width: 768px) {
+  .navbar-toggler {
+    order: -1; /* 將左邊的按鈕移到最前面 */
+  }
+
+  .navbar {
+    flex-wrap: nowrap; /* 防止元素換行 */
+  }
+
+  .navbar-brand {
+    content: url("image/logo2.png");
+    max-width: 50%;
+    height: auto;
+    margin: 0 auto; /* 水平置中 */
+    display: block;
+  }
+
+  .offcanvas-start {
+    width: auto; /* 讓左邊按鈕僅占據需要的空間 */
+  }
+
+  .offcanvas-end {
+    width: 100%; /* 讓右邊按鈕充滿整個寬度 */
+  }
+}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+  <script type="module" src="../JS/JS_HTML/D_Nav.js"></script>
+</nav>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>查看產檢憑證-產檢流程證明系統</title>
+  <link rel="icon" href="image/logo.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="image/logo.ico" type="image/x-icon" />
+  <!-- 引入 Web3.js 庫 -->
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+  <!-- 引入 jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script type="module" src="../JS/JS_HTML/D_Nav.js"></script>
+</head>
+<script>
+  // 使用 jQuery 載入 nav.html
+  $(document).ready(function () {
+    $("#navContainer").load("D_nav.html", function () {
+      // 在加载完成后显示导航栏
+      $("#navContainer").css("opacity", 1);
+      $(".main").css("opacity", 1);
+    });
+  });
+</script>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  #navContainer {
+    opacity: 0;
+    /*元素的透明度設為不可見*/
+    transition: opacity 0.5s ease-in-out;
+    /*元素的透明度发生变化时，以0.5秒的时间，进行平滑过渡*/
+  }
+
+  .navbar-brand {
+    font-size: x-large;
+  }
+
+  .bgc {
+    background-color: #e8eff5;
+    width: 100vw;
+  }
+
+  .main {
+    margin-top: 62px;
+    background-color: #fff;
+    margin: 75px 1.5% 80px;
+    width: 97%;
+    opacity: 0;
+    /*元素的透明度設為不可見*/
+    transition: opacity 0.5s ease-in-out;
+    /*元素的透明度发生变化时，以0.5秒的时间，进行平滑过渡*/
+  }
+
+  .container {
+    padding: 30px 0;
+  }
+</style>
+
+<body class="bgc">
+  <div id="navContainer"></div>
+  <main class="main">
+    <!-- 查詢區域 -->
+    <section class="container mt-5">
+      <h2>查詢產檢憑證資料</h2>
+      <div class="mb-3">
+        <label for="idNumber" class="form-label">輸入身分證字號：</label>
+        <input type="text" class="form-control" id="idNumber" placeholder="請輸入身分證字號">
+      </div>
+      <button type="button" class="btn btn-primary" id="queryButton">查詢</button>
+    </section>
+    <!-- 顯示產檢資料區域 -->
+    <section class="container mt-5">
+      <h2>憑證資料</h2>
+      <div id="result"></div>
+    </section>
+  </main>
+
+  <script type="module" src="../JS/JS_HTML/D_QCertificate.js"></script>
+</body>
+
+</html>

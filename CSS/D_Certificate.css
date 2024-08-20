@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'ABeeZee', sans-serif;
+
+  }
+
+#navContainer {
+    opacity: 0;
+    /*元素的透明度設為不可見*/
+    transition: opacity 0.5s ease-in-out;
+    /*元素的透明度发生变化时，以0.5秒的时间，进行平滑过渡*/
+}
+
+.bgc {
+    background-color: #e8eff5;
+}
+
+img {
+    max-width: 65%;
+    display: block;
+    margin: 12% auto;
+
+}
+.main{
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    /*元素的透明度設為不可見*/
+    transition: opacity 0.5s ease-in-out;
+    /*元素的透明度发生变化时，以0.5秒的时间，进行平滑过渡*/
+
+}
+.table-container {
+
+    max-width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    margin-top: 100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#h2 {
+    margin-bottom: 20px;
+    color: #007bff;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin: 1%;
+    font-size: 20px;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.form-control-default {
+    margin-bottom: 2%;
+}
+
+.submitBtn {
+    display: block;
+    margin-left: auto;
+    border: none;
+    background-color: #698aab;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 20px;
+    width: 15%;
+    margin-top: 3%;
+}
+
+.submitBtn:hover {
+    background-color: #44617b;
+    transform: translateY(-2px);
+}
+
+
+/* 啟動流程的 CSS 樣式 */
+.startup-section {
+    opacity: 0;
+    /*元素的透明度設為不可見*/
+    transition: opacity 0.5s ease-in-out;
+    /*元素的透明度发生变化时，以0.5秒的时间，进行平滑过渡*/
+  }
+
+  .startup-section h1 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .startup-section form {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .startup-section form input[name="run_python"] {
+      padding: 15px 30px; /* 調整按鈕的 padding */
+      font-size: 20px; /* 調整按鈕的字體大小 */
+      width: 200px; /* 調整按鈕的寬度 */
+      height: 60px; /* 調整按鈕的高度 */
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+  .startup-section form input[name="run_python"]:hover {
+    background-color: #45a049;
+  }
+/* --- end 啟動流程的 CSS 樣式 --- */
+

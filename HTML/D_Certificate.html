@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>document.getElementsByTagName("html")[0].className += " js";</script>
+    <title>新增產檢資料-產檢流程證明系統</title>
+    <link rel="stylesheet" href="../CSS/D_Certificate.css">
+    <link rel="icon" href="image/logo.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="image/logo.ico" type="image/x-icon" />
+    <!-- 引入 Web3.js 庫 -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+    <!-- 引入 jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="module" src="../JS/JS_HTML/D_Nav.js"></script>
+</head>
+<script>
+    // 使用 jQuery 載入 nav.html
+    $(document).ready(function () {
+        $("#navContainer").load("D_nav.html", function () {
+            // 在加载完成后显示导航栏
+            $("#navContainer").css("opacity", 1);
+            $(".main").css("opacity", 1);
+        });
+    });
+</script>
+
+<body class="bgc">
+    <div id="navContainer"></div>
+    <main class="main">
+        <div class="table-container">
+            <h2 id="h2">憑證上傳</h2>
+            <form id="uploadForm">
+                <label for="userAddress">使用者地址：</label>
+                <input class="form-control form-control-default" type="text" id="userAddress" required>
+
+                <label for="dataString">憑證名稱：</label>
+                <input class="form-control form-control-default" type="text" id="dataString" required>
+
+                <label for="cid1">CID 1：</label>
+                <input class="form-control form-control-default" type="text" id="cid1" required>
+
+                <label for="cid2">CID 2：</label>
+                <input class="form-control form-control-default" type="text" id="cid2" required>
+
+                <button class="submitBtn" type="button" onclick="uploadData()">上 傳</button>
+            </form>
+            <div id="result"></div>
+        </div>
+    </main>
+
+
+    <script type="module" src="../JS/JS_HTML/D_certificate.js"></script>
+</body>
+
+</html>

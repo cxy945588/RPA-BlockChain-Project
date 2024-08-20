@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>document.getElementsByTagName("html")[0].className += " js";</script>
+    <title>新增產檢資料-產檢流程證明系統</title>
+    <link rel="icon" href="image/logo.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="image/logo.ico" type="image/x-icon" />
+    <!-- 引入 Web3.js 庫 -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+    <!-- 引入 jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="module" src="../JS/JS_HTML/D_Nav.js"></script>
+</head>
+<script>
+    // 使用 jQuery 載入 nav.html
+    $(document).ready(function () {
+        $("#navContainer").load("D_nav.html", function () {
+            // 在加载完成后显示导航栏
+            $("#navContainer").css("opacity", 1);
+            $(".main").css("opacity", 1);
+        });
+    });
+</script>
+
+<body class="bgc">
+    <div id="navContainer"></div>
+    <main class="main">
+        <form class="form" id="inspectionForm">
+            <div class="formheader">
+                <div class="left-content">
+                    <h2>第一次產檢報告紀錄</h2>
+                </div>
+                <div class="right-content">
+                    <p id="resultContainer" colspan="4" scope="col"></p>
+                </div>
+            </div>
+            <div class="form-card">
+                <h3>問診內容</h3>
+
+                <div class="box">
+                    <label class="label" for="Bleeding">出血</label>
+                    <input class="form-control form-control-default" type="text" id="Bleeding" name="Bleeding"
+                        placeholder="+ , -" required>
+                </div>
+                <div class="box">
+                    <label class="label" for="Stomach_ache">腹痛</label>
+                    <input class="form-control form-control-default" type="text" id="Stomach_ache" name="Stomach_ache"
+                        placeholder="+ , -" required>
+                </div>
+                <div class="box">
+                    <label class="label" for="Headache">頭痛</label>
+                    <input class="form-control form-control-default" type="text" id="Headache" name="Headache"
+                        placeholder="+ , -" required>
+                </div>
+                <div class="box">
+                    <label class="label" for="Spasms">痙攣</label>
+                    <input class="form-control form-control-default" type="text" id="Spasms" name="Spasms"
+                        placeholder="+ , -" required>
+                </div>
+
+            </div>
+            <div class="form-card">
+                <h3>身體檢查</h3>
+
+                <div class="box">
+                    <label class="label" for="weight">體重</label>
+                    <input class="form-control form-control-default" type="text" id="weight" name="weight"
+                        placeholder="kg" required>
+                </div>
+                <div class="box">
+                    <label class="label" for="SBP">血壓收縮壓</label>
+                    <input class="form-control form-control-default" type="text" id="SBP" name="SBP" placeholder="mmHg"
+                        required>
+                </div>
+                <div class="box">
+                    <label class="label" for="DBP">血壓舒張壓</label>
+                    <input class="form-control form-control-default" type="text" id="DBP" name="DBP" placeholder="mmHg"
+                        required>
+                </div>
+                <div class="box">
+                    <label class="label" for="heart">胎心音</label>
+                    <input class="form-control form-control-default" type="text" id="heart" name="heart"
+                        placeholder="次/分鐘" required>
+                </div>
+                <div class="box">
+                    <label class="label" for="position">胎位</label>
+                    <input class="form-control form-control-default" type="text" id="position" name="position"
+                        placeholder="正常/異常" required>
+                </div>
+                <div class="box">
+                    <label class="label" for="edema">浮腫</label>
+                    <input class="form-control form-control-default" type="text" id="edema" name="edema"
+                        placeholder="+ , -" required>
+                </div>
+                <div class="box">
+                    <label class="label" for="varicose_veins">靜脈曲張</label>
+                    <input class="form-control form-control-default" type="text" id="varicose_veins"
+                        name="varicose_veins" placeholder="+ , -" required>
+                </div>
+
+            </div>
+            <div class="form-card">
+                <h3>實驗室檢查</h3>
+
+                <div class="box">
+                    <label class="label" for="urine_protein">尿蛋白</label>
+                    <input class="form-control form-control-default" type="text" id="urine_protein" name="urine_protein"
+                        placeholder="+ , -" required>
+                </div>
+                <div class="box">
+                    <label class="label" for="urine_sugar">尿糖</label>
+                    <input class="form-control form-control-default" type="text" id="urine_sugar" name="urine_sugar"
+                        placeholder="+ , -" required>
+                </div>
+
+            </div>
+            <div class="form-card">
+                <h3>超音波檢查</h3>
+                <div class="box">
+                    <label class="label" for="GAP">胎數</label>
+                    <input class="form-control form-control-default" type="text" id="GAP" name="GAP" placeholder=""
+                        required>
+                </div>
+                <div class="box">
+                    <label class="label" for="FHB">胎兒心跳</label>
+                    <input class="form-control form-control-default" type="text" id="FHB" name="FHB" placeholder="有/無"
+                        required>
+                </div>
+                <div class="box">
+                    <label class="label" for="FCPosition">著床位置</label>
+                    <input class="form-control form-control-default" type="text" id="FCPosition" name="FCPosition"
+                        placeholder="正常/異常" required>
+                </div>
+                <div class="box">
+                    <label class="label" for="CRL">胎兒頭臀長</label>
+                    <input class="form-control form-control-default" type="text" id="CRL" name="CRL" placeholder="公分"
+                        required>
+                </div>
+                <div class="box">
+                    <label class="label" for="BPD">胎兒頭雙頂骨徑</label>
+                    <input class="form-control form-control-default" type="text" id="BPD" name="BPD" placeholder="公分"
+                        required>
+                </div>
+                <div class="box">
+                    <label class="label" for="SR">篩檢結果</label>
+                    <input class="form-control form-control-default" type="text" id="SR" name="SR"
+                        placeholder="常規檢查/需進一步追蹤檢查" required>
+                </div>
+                <div class="box">
+                    <label class="label" for="CID">超音波圖片</label>
+                    <input class="form-control form-control-default" type="text" id="CID" name="CID" placeholder="CID"
+                        required>
+                </div>
+
+            </div>
+
+
+            <button type="submit" class="btn btn-lg">確定送出</button>
+
+        </form>
+    </main>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #navContainer {
+            opacity: 0;
+            /*元素的透明度設為不可見*/
+            transition: opacity 0.5s ease-in-out;
+            /*元素的透明度发生变化时，以0.5秒的时间，进行平滑过渡*/
+        }
+
+        .navbar-brand {
+            font-size: x-large;
+        }
+
+        .bgc {
+            background-color: #e8eff5;
+            width: 100vw;
+        }
+
+        .main {
+            margin-top: 62px;
+            background-color: #fff;
+            margin: 75px 1.5% 80px;
+            width: 97%;
+            opacity: 0;
+            /*元素的透明度設為不可見*/
+            transition: opacity 0.5s ease-in-out;
+            /*元素的透明度发生变化时，以0.5秒的时间，进行平滑过渡*/
+        }
+
+        .formheader {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .left-content {
+            flex: 1;
+            margin-top: 1%;
+            margin-left: 2%;
+            width: 30%;
+        }
+
+        .right-content {
+            text-align: right;
+            width: 60%;
+            margin-top: 1%;
+            margin-right: 3%;
+            top: 0;
+            position: relative;
+        }
+
+        label {
+            font-size: 18px;
+            /* You can adjust the font size as needed */
+        }
+
+        .form {
+            width: 97%;
+            height: 97%;
+            margin: 2%;
+            padding: 30px 0;
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        .form-card {
+            float: left;
+            width: 22%;
+            padding: 1% 3%;
+            margin: 1%;
+            box-sizing: border-box;
+        }
+
+        .form-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: -1px;
+            /* 負數值將線移到左邊 */
+            width: 1px;
+            background-color: transparent;
+        }
+
+        .form-card:not(:first-child) {
+            border-left: 2px solid #ddd;
+        }
+
+        .form-card:last-child {
+            border-right: none;
+        }
+
+        .form-control-default {
+            margin-top: 1%;
+        }
+
+        .form-control-default::placeholder {
+            color: rgb(191, 191, 191);
+            margin-top: 3%;
+            padding-left: 1%;
+        }
+
+        .box {
+            margin: 2% 0;
+        }
+
+        .btn {
+            width: 10%;
+            margin: 0 87% 1.5%;
+            /*background-color: rgb(171, 204, 206);*/
+            background-color: hsl(206, 21%, 81%);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+            height: auto;
+            overflow: hidden;
+            box-shadow: 0.15em 0.15em hsl(206, 21%, 81%);
+        }
+
+        .btn:hover {
+            background-color: rgb(102, 119, 130);
+            transition: 0.7s;
+        }
+    </style>
+    <script>
+        // 获取输入字段元素
+        const weightInput = document.getElementById("weight");
+        const SBPInput = document.getElementById("SBP");
+        const DBPInput = document.getElementById("DBP");
+        const heartInput = document.getElementById("heart");
+        const positionInput = document.getElementById("position");
+        const edemaInput = document.getElementById("edema");
+        const varicoseVeinsInput = document.getElementById("varicose_veins");
+        const urineProteinInput = document.getElementById("urine_protein");
+        const urineSugarInput = document.getElementById("urine_sugar");
+        const bleedingInput = document.getElementById("Bleeding");
+        const stomachAcheInput = document.getElementById("Stomach_ache");
+        const headacheInput = document.getElementById("Headache");
+        const spasmsInput = document.getElementById("Spasms");
+        const FHBInput = document.getElementById("FHB");
+        const FCPositionInput = document.getElementById("FCPosition");
+        const CRLInput = document.getElementById("CRL");
+        const BPDInput = document.getElementById("BPD");
+        const SRInput = document.getElementById("SR");
+
+        // 添加输入事件监听器
+        weightInput.addEventListener("input", validateInput);
+        SBPInput.addEventListener("input", validateInput);
+        DBPInput.addEventListener("input", validateInput);
+        heartInput.addEventListener("input", validateInput);
+        positionInput.addEventListener("input", validateInput);
+        edemaInput.addEventListener("input", validateInput);
+        varicoseVeinsInput.addEventListener("input", validateInput);
+        urineProteinInput.addEventListener("input", validateInput);
+        urineSugarInput.addEventListener("input", validateInput);
+        bleedingInput.addEventListener("input", validateInput);
+        stomachAcheInput.addEventListener("input", validateInput);
+        headacheInput.addEventListener("input", validateInput);
+        spasmsInput.addEventListener("input", validateInput);
+        FHBInput.addEventListener("input", validateInput);
+        FCPositionInput.addEventListener("input", validateInput);
+        CRLInput.addEventListener("input", validateInput);
+        BPDInput.addEventListener("input", validateInput);
+        SRInput.addEventListener("input", validateInput);
+
+        // 验证输入数据的函数
+        function validateInput(event) {
+            const inputField = event.target;
+            const inputValue = inputField.value;
+            const fieldName = inputField.name;
+
+            // 根据字段名称进行不同的验证
+            switch (fieldName) {
+                case "blood1":
+                    if (parseInt(inputValue) < 80 || parseInt(inputValue) > 140) {
+                        inputField.style.color = "red";
+                        inputField.style.fontWeight = "bold";
+                    } else {
+                        inputField.style.color = "black";
+                        inputField.style.fontWeight = "normal";
+                    }
+                    break;
+                case "blood2":
+                    if (parseInt(inputValue) < 50 || parseInt(inputValue) > 90) {
+                        inputField.style.color = "red";
+                        inputField.style.fontWeight = "bold";
+                    } else {
+                        inputField.style.color = "black";
+                        inputField.style.fontWeight = "normal";
+                    }
+                    break;
+                case "heart":
+                    if (parseInt(inputValue) < 110 || parseInt(inputValue) > 160) {
+                        inputField.style.color = "red";
+                        inputField.style.fontWeight = "bold";
+                    } else {
+                        inputField.style.color = "black";
+                        inputField.style.fontWeight = "normal";
+                    }
+                    break;
+                case "position":
+                    if (inputValue === "異常") {
+                        inputField.style.color = "red";
+                        inputField.style.fontWeight = "bold";
+                    } else {
+                        inputField.style.color = "black";
+                        inputField.style.fontWeight = "normal";
+                    }
+                    break;
+                case "edema":
+                case "varicose_veins":
+                    if (inputValue === "+") {
+                        inputField.style.color = "red";
+                        inputField.style.fontWeight = "bold";
+                    } else {
+                        inputField.style.color = "black";
+                        inputField.style.fontWeight = "normal";
+                    }
+                    break;
+                case "urine_protein":
+                case "urine_sugar":
+                    if (
+                        inputValue === "++" ||
+                        inputValue === "+++" ||
+                        inputValue === "++++"
+                    ) {
+                        inputField.style.color = "red";
+                        inputField.style.fontWeight = "bold";
+                    } else {
+                        inputField.style.color = "black";
+                        inputField.style.fontWeight = "normal";
+                    }
+                    break;
+                case "Bleeding":
+                case "Stomach_ache":
+                case "Headache":
+                case "Spasms":
+                    if (inputValue === "+") {
+                        inputField.style.color = "red";
+                        inputField.style.fontWeight = "bold";
+                    } else {
+                        inputField.style.color = "black";
+                        inputField.style.fontWeight = "normal";
+                    }
+                    break;
+                default:
+                    inputField.style.color = "black";
+                    inputField.style.fontWeight = "normal";
+
+                case "FHB":
+                    if (inputValue === "無") {
+                        inputField.style.color = "red";
+                        inputField.style.fontWeight = "bold";
+                    } else {
+                        inputField.style.color = "black";
+                        inputField.style.fontWeight = "normal";
+                    }
+                    break;
+                case "FCPosition":
+                    if (inputValue === "異常") {
+                        inputField.style.color = "red";
+                        inputField.style.fontWeight = "bold";
+                    } else {
+                        inputField.style.color = "black";
+                        inputField.style.fontWeight = "normal";
+                    }
+                    break;
+
+                case "CRL":
+                    const numericValueCRL = parseFloat(inputValue);
+                    if (numericValueCRL >= 1.6 && numericValueCRL <= 2.0) {
+                        inputField.style.color = "black";
+                        inputField.style.fontWeight = "normal";
+                    } else {
+                        inputField.style.color = "red";
+                        inputField.style.fontWeight = "bold";
+                    }
+                    break;
+
+                case "BPD":
+                    const numericValueBPD = parseFloat(inputValue);
+                    if (numericValueBPD >= 1.3 && numericValueBPD <= 1.8) {
+                        inputField.style.color = "black";
+                        inputField.style.fontWeight = "normal";
+                    } else {
+                        inputField.style.color = "red";
+                        inputField.style.fontWeight = "bold";
+                    }
+                    break;
+                case "SR":
+                    if (inputValue === "需進一步追蹤檢查") {
+                        inputField.style.color = "red";
+                        inputField.style.fontWeight = "bold";
+                    } else {
+                        inputField.style.color = "black";
+                        inputField.style.fontWeight = "normal";
+                    }
+                    break;
+
+
+            }
+        }
+    </script>
+    <script type="module" src="../JS/JS_SOL/D_add.js"></script>
+</body>
+
+</html>

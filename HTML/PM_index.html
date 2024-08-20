@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>首頁-產檢流程證明系統</title>
+  <link rel="stylesheet" href="../CSS/D_index.css">
+  <link rel="icon" href="image/logo.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="image/logo.ico" type="image/x-icon" />
+  <!-- 引入 Web3.js 庫 -->
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+  <!-- 引入 jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script type="module" src="../JS/JS_HTML/D_Nav.js"></script>
+</head>
+<script>
+  // 使用 jQuery 載入 nav.html
+  $(document).ready(function () {
+    $("#navContainer").load("PM_nav.html", function () {
+      // 在加载完成后显示导航栏
+      $("#navContainer").css("opacity", 1);
+      $(".custom-div").css("opacity", 1);
+    });
+  }); 
+</script>
+
+<body class="bgc">
+  <div id="navContainer"></div>
+  <main>
+    <div class="container">
+      <div class="custom-div">
+        <a href="孕婦名單管理.html">
+          <img src="image/serch.png" alt="孕婦名單管理" class="enlarge-image" />
+          <p class="no-underline">孕婦名單管理</p>
+        </a>
+      </div>
+
+      <div class="custom-div">
+        <a href="權限管理.html">
+          <img src="image/index_person.png" alt="權限管理" class="enlarge-image4" />
+          <p class="no-underline">權限管理</p>
+        </a>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

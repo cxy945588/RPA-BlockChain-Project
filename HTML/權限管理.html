@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>權限管理-產檢流程證明系統</title>
+	<link rel="stylesheet" type="text/css" href="../CSS/權限管理.css" />
+	<link rel="icon" href="image/logo.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="image/logo.ico" type="image/x-icon" />
+	<!-- 引入 Web3.js 庫 -->
+	<script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+	<!-- 引入 jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script type="module" src="../JS/JS_HTML/D_Nav.js"></script>
+</head>
+<script>
+	// 使用 jQuery 載入 nav.html
+	$(document).ready(function () {
+		$("#navContainer").load("PM_nav.html", function () {
+			// 在加载完成后显示导航栏
+			$("#navContainer").css("opacity", 1);
+			$(".main").css("opacity", 1);
+		});
+	}); 
+</script>
+
+<body>
+
+	<div id="navContainer"></div>
+	<div class="main">
+		<div class="container">
+			<h4><span id="hospitalName"></span></h4>
+			<button id="addEmployeeButton" class="btn btn-secondary">
+				+新增資料
+			</button>
+		</div>
+		<br />
+		<!-- 使用包含样式类的 div 包裹表格内容 -->
+		<div class="container" id="list2TableContainer">
+			<!-- 这里放入表格内容 -->
+		</div>
+	</div>
+
+	<script type="module" src="../JS/JS_HTML/權限管理.js"></script>
+</body>
+
+</html>

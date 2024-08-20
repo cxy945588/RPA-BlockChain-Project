@@ -1,0 +1,158 @@
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  /*box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);*/
+  z-index: 9999;
+  /* 确保弹出框位于其他内容之上 */
+  display: none;
+  /* 初始状态下隐藏弹出框 */
+}
+img {
+  max-width: 50%;
+  display: block;
+  margin: 12% auto;
+
+}
+
+body {
+  padding-top: 70px;
+  /* 根据导航栏的高度来调整内边距 */
+}
+#navContainer {
+  opacity: 0;
+  /*元素的透明度設為不可見*/
+  transition: opacity 0.5s ease-in-out;
+  /*元素的透明度发生变化时，以0.5秒的时间，进行平滑过渡*/
+}
+.main {
+  margin-top: 5px;
+  opacity: 0;
+  /*元素的透明度設為不可見*/
+  transition: opacity 0.5s ease-in-out;
+  /*元素的透明度发生变化时，以0.5秒的时间，进行平滑过渡*/
+}
+
+/* 包裹表格的外围div样式 */
+.container {
+  background-color: #e8eff5;
+  ;
+  /* 背景色 */
+  border-radius: 10px;
+  /* 圆角边框 */
+  padding: 20px;
+  /* 可根据需要调整内边距 */
+  overflow: auto;
+  /* 如果表格内容太多，启用滚动条 */
+  max-width: 100%;
+  /* 100%宽度，自适应父容器宽度 */
+  margin: 0 auto;
+  /* 水平居中 */
+  text-align: center;
+  /* 将文本水平居中对齐 */
+
+  /*border: 1px solid #ccc;  边框样式 */
+}
+
+.container1 {
+  background-color: #e8eff5;
+  /* 背景色 */
+  border-radius: 10px;
+  /* 圆角边框 */
+  padding: 20px;
+  /* 可根据需要调整内边距 */
+  overflow: auto;
+  /* 如果表格内容太多，启用滚动条 */
+  width: 80%;
+  max-width: 100%;
+  /* 100%宽度，自适应父容器宽度 */
+  margin: 0 auto;
+  /* 水平居中 */
+  text-align: center;
+  /* 将文本水平居中对齐 */
+  margin-top: 15px;
+  margin-bottom: 15px;
+  /*border: 1px solid #ccc;  边框样式 */
+}
+
+.list1btm {
+  margin-left: 5px;
+}
+
+.center-button {
+  text-align: center;
+  /* 设置文本居中对齐，这将影响内部文本元素（如按钮） */
+}
+
+/* 添加响应式设计 */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+    /* 在小屏幕下减少内边距 */
+  }
+
+  h4 {
+    text-align: center;
+    /* 将h4文本右对齐 */
+  }
+}
+
+
+/* 表格样式 */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 60%;
+  /* 控制表格的最大宽度 */
+  margin: 0 auto;
+  /* 水平居中 */
+  padding: 50px 0;
+  /* 添加左右内边距，增加表格的左右空间 */
+}
+
+
+.th1 {
+  font-size: 20px;
+  text-align: center;
+  background-Color: #3f3f3f;
+  color: white;
+}
+
+.data-cell {
+  text-align: center;
+}
+
+
+/* 设置输入框之间的垂直间距 */
+label {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+input {
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  /* 边框线宽度、样式和颜色 */
+  padding: 5px;
+  /* 可选：增加一些内边距以改善外观 */
+}
+
+/* 设置输入框的宽度 */
+input {
+  width: 50%;
+  /* 或者设置一个固定宽度，例如 width: 200px; */
+}
+
+/* 设置提交按钮的样式 */
+.popup button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}

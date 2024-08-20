@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>查詢產檢資料-產檢流程證明系統</title>
+  <link rel='stylesheet' href='https://unpkg.com/swiper/swiper-bundle.min.css'>
+  <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="stylesheet" href="../CSS/P_N_index.css">
+  <link rel="icon" href="image/logo.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="image/logo.ico" type="image/x-icon" />
+  <!-- 引入 Web3.js 庫 -->
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+  <!-- 引入 jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script type="module" src="../JS/JS_HTML/P_Nav.js"></script>
+</head>
+<script>
+  // 使用 jQuery 載入 nav.html
+  $(document).ready(function () {
+    $("#navContainer").load("P_nav.html", function () {
+      // 在加载完成后显示导航栏
+      $("#navContainer").css("opacity", 1);
+      $(".bgc").css("opacity", 1);
+    });
+  }); 
+</script>
+
+<body class="bgc"> 
+   <div id="navContainer"></div>
+
+  <section class="cd-timeline js-cd-timeline">
+    <div class="container max-width-lg cd-timeline__container" id="result">
+    </div>
+  </section>
+  <div id="pdfViewer">
+    <!-- 這裡將顯示PDF圖片 -->
+  </div>
+
+  <!-- 載入後端程式碼 -->
+  <script type="module" src="../JS/JS_HTML/P_N_index.js"></script>
+</body>
+
+</html>

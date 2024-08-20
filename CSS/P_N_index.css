@@ -1,0 +1,63 @@
+/* 定義不同類別的顏色 */
+.bgc{
+    background-color: #e8eff5;
+    opacity: 0;  /*元素的透明度設為不可見*/
+  transition: opacity 0.5s ease-in-out;  /*元素的透明度发生变化时，以0.5秒的时间，进行平滑过渡*/
+  }
+  .result1 {
+      background-color: #fff; /* 紅色 */
+      float: left; /* 左浮動 */
+      clear: left; /* 清除左浮動 */
+      border-radius: 3px;
+      box-shadow: 0 3px hsl(205, 38%, 89%);
+      margin:6% 10% 10% 10%;
+      padding: 20px;
+      position: relative;
+  }
+  .result2 {
+      background-color: #fff; /* 綠色 */
+      float: right; /* 右浮動 */
+      clear: right; /* 清除右浮動 */
+      border-radius: 3px;
+      box-shadow: 0 3px hsl(205, 38%, 89%);
+      margin: 15% 10% 8% 10%;
+      padding: 20px;
+  }
+  /* 時間軸線條 */
+  .timeline{
+    margin: 6% 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0%;
+    width: 4px;
+    background: hsl(205, 38%, 89%);
+  }
+ /* 圓圈標誌的樣式 */
+.circle {
+    position: absolute;
+    background: #75CD65; /* 綠色 */
+    border: 3px solid #f6f6f6;
+    border-radius: 50%; /* 使它成為圓形 */
+    width: 70px; /* 設定圓圈的直徑 */
+    height: 70px;
+    left: 50%; /* 將圓圈放置在時間軸的中間 */
+    top: 0; /* 將圓圈置於網頁的最上方 */
+    transform: translateX(-50%); /* 水平置中 */
+    cursor: pointer; /* 添加游標指示 */
+    text-align: center; /* 文本水平居中 */
+    line-height: 70px; /* 文本垂直居中 */
+    font-weight: bold; /* 粗體 */
+    color: white; /* 白色文字 */
+    box-shadow: inset 0 0 3px rgba(58, 58, 58, 0.5); /* 將內陰影套用在邊框內部 */
+}
+
+
+/* 各週圓圈的位置 */
+#week1 { top: 10%; }
+#week2 { top: 20%; }
+#week3 { top: 30%; }
+#week4 { top: 40%; }
+#week5 { top: 50%; }
+#week6 { top: 60%; }
+#week7 { top: 70%; }
+#week8 { top: 80%; }
